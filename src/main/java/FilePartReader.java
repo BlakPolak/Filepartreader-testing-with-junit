@@ -53,7 +53,7 @@ public class FilePartReader {
                 Integer fromLine = this.fromLine--;
                 Integer toLine = this.toLine--;
                 if (Objects.equals(this.fromLine, this.toLine)) {
-                    return lines.get(fromLine);
+                    return lines.get(fromLine-1);
                 }
                 for (Integer iterator = this.fromLine; iterator < toLine; iterator++) {
                     String line = lines.get(iterator) + "\n";
