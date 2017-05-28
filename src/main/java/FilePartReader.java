@@ -16,6 +16,7 @@ public class FilePartReader {
         this.fromLine = 0;
         this.toLine = 1;
     }
+
     public void setup(String filePath, Integer fromLine, Integer toLine){
         this.filePath = filePath;
         this.fromLine = fromLine;
@@ -33,14 +34,14 @@ public class FilePartReader {
             br = new BufferedReader(new FileReader(this.filePath));
             String line = br.readLine();
             while (line != null) {
-                sb.append(line);
-                sb.append("\n");
+                sb.append(line + "\n");
                 line = br.readLine();
             }
             br.close();
-        } catch (IOException ex){
+        } catch (IOException ex) {
             throw new FileNotFoundException();
         }
+
         return sb.toString();
     }
 
@@ -49,6 +50,7 @@ public class FilePartReader {
             String fileString = read();
             List<String> lines = Arrays.asList(fileString.split("\n"));
             StringBuilder stringLines = new StringBuilder();
+
             if (this.fromLine != null && this.toLine != null) {
                 Integer fromLine = this.fromLine--;
                 Integer toLine = this.toLine--;
@@ -61,7 +63,7 @@ public class FilePartReader {
                 }
                 return stringLines.toString().trim();
             }
-        } catch(IOException ex){
+        } catch (IOException ex) {
             throw new FileNotFoundException();
         }
         return null;
